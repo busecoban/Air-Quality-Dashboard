@@ -23,23 +23,27 @@ st.set_page_config(page_title="Antalya AQI", page_icon="🌬️", layout="wide")
 st.markdown(
     """
     <style>
-    /* Sidebar tweaks */
-    section[data-testid="stSidebar"] {
-        background-color: #f4f7fb;
-        padding-top: 2rem;
-        width: 230px !important;    /* a bit slimmer */
-    }
-    /* Sidebar text alignment & spacing */
-    section[data-testid="stSidebar"] div[data-testid="stVerticalBlock"] {
-        text-align: left;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-    .sidebar-title {font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;}
-    .sidebar-label {color:#6c6c6c; font-size:0.9rem; margin:0;}
-    .sidebar-value {font-weight:600; margin-bottom:0.75rem;}
-        main div.block-container {padding-bottom: 0rem;} /* remove bottom gap */
-    </style>
+/* Sidebar */
+section[data-testid="stSidebar"] {
+  background-color: #f4f7fb;
+  padding-top: 1.5rem;
+  width: 220px !important;  /* slightly slimmer */
+}
+section[data-testid="stSidebar"] div[data-testid="stVerticalBlock"] {
+  padding: 0 0.5rem;
+}
+.sidebar-title {font-size:1.2rem;font-weight:600;margin-bottom:0.4rem;}
+.sidebar-label {color:#6c6c6c;font-size:0.85rem;margin:0;}
+.sidebar-value {font-weight:600;margin-bottom:0.6rem;}
+
+/* Main container spacing */
+main > div.block-container {padding-top:0.5rem;padding-bottom:0rem;}
+
+/* Headings & element gaps */
+h1,h2,h3 {margin-top:0.25rem;margin-bottom:0.6rem;}
+.element-container:has(div[data-testid="stMetric"]){margin-bottom:0.6rem;}
+
+</style>
     """,
     unsafe_allow_html=True,
 )
@@ -137,4 +141,4 @@ folium.CircleMarker(
     popup=f"AQI: {aqi}",
 ).add_to(fol_map)
 
-st_folium(fol_map, height=350, width="100%")
+st_folium(fol_map, height=550, width="100%")
